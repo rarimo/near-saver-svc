@@ -1,0 +1,32 @@
+log:
+  disable_sentry: true
+  level: debug
+
+listener:
+  addr: :8000
+
+near:
+  rpc: "https://rpc.testnet.near.org"
+  rpc_archival: "https://archival-rpc.testnet.near.org"
+
+listen:
+  contract: "bridge.rarimo.testnet"
+  from_block: 103116740
+  batch_size: 200
+  chain: Near
+
+s3:
+  access_key: "ACCESSKEY"
+  secret_access_key: "SECRET_ACCESS_KEY"
+  region: "eu-central-1"
+  bucket: "near-lake-data-testnet" # change suffix according to the network (testnet/mainnet)
+
+broadcaster:
+  addr: "localhost:9090"
+  sender_account: "rarimo1g9p4ejp9p877j9vdnuyqtgqm4lhm4f6j7uaztx"
+
+core:
+  addr: "tcp://localhost:26657"
+
+cosmos:
+  addr: "localhost:9090"
