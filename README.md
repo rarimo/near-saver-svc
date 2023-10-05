@@ -14,4 +14,4 @@ It will build the image with the tag `near-saver-svc:latest` which could be used
 Docker or Docker-Compose.
 
 ## License
-[MIT](./LICENSE.md)
+[MIT](./LICENSE)
