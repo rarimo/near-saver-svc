@@ -12,7 +12,7 @@ import (
 )
 
 type txParser interface {
-	ParseTransaction(ctx context.Context, event *common.BridgeEvent, transfer *rarimotypes.Transfer) error
+	ParseTransaction(ctx context.Context, event *common.BridgeDepositedEvent, transfer *rarimotypes.Transfer) error
 }
 
 type TransferOperator struct {
@@ -28,9 +28,9 @@ func NewTransferOperator(cfg config.Config) *TransferOperator {
 		contract: cfg.ListenConf().Contract,
 		chain:    cfg.ListenConf().Chain,
 		txParsers: map[common.BridgeEventType]txParser{
-			common.NativeEventType: NewNativeOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
-			common.FTEventType:     NewFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
-			common.NFTEventType:    NewNFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Near(), cfg.Log()),
+			common.EventTypeNativeDeposited: NewNativeOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
+			common.EventTypeFTDeposited:     NewFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
+			common.EventTypeNFTDeposited:    NewNFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Near(), cfg.Log()),
 		},
 	}
 }

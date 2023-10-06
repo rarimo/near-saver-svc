@@ -1174,8 +1174,8 @@ github.com/rarimo/broadcaster-svc v1.0.2 h1:ExQcjjWCRP5+POLDlZHrTD1ffUsBH+Dgv5FA
 github.com/rarimo/broadcaster-svc v1.0.2/go.mod h1:lYIHy+X4IqQt4eBdtMN/V352H3EV0/gO8G+32SFwUWI=
 github.com/rarimo/cosmos-sdk v0.46.7 h1:jU2PiWzc+19SF02cXM0O0puKPeH1C6Q6t2lzJ9s1ejc=
 github.com/rarimo/cosmos-sdk v0.46.7/go.mod h1:fqKqz39U5IlEFb4nbQ72951myztsDzFKKDtffYJ63nk=
-github.com/rarimo/near-go v0.0.0-20231005083452-a6a5e72cf5ef h1:BId1+boLBFh7tjcsv0pIkEkNERIJkWcM1zv6/XXtbmI=
-github.com/rarimo/near-go v0.0.0-20231005083452-a6a5e72cf5ef/go.mod h1:elvfSEsgy3N7Q0XZW0gT6ls4WRjvH24CfF6bB3XXzY4=
+github.com/rarimo/near-go v0.0.0-20231006082437-36a0ae8fdb02 h1:dDifT3rFg/u4439ZE4E9yybyPqk36Sr2DtFFxTjKKPM=
+github.com/rarimo/near-go v0.0.0-20231006082437-36a0ae8fdb02/go.mod h1:elvfSEsgy3N7Q0XZW0gT6ls4WRjvH24CfF6bB3XXzY4=
 github.com/rarimo/rarimo-core v0.0.0-20231004143803-6b209428ecbf h1:NvYhOErW0d7ohn2YzGxQYKssrgVrKOvjrKL1OBQgCB4=
 github.com/rarimo/rarimo-core v0.0.0-20231004143803-6b209428ecbf/go.mod h1:Onkd0EJP94hw4dT/2KH7QXRwDG4eIGeaMffSjA1i6/s=
 github.com/rarimo/saver-grpc-lib v1.0.0 h1:MGUVjYg7unmodYczVsLqlqZNkT4CIgKqdo6aQtL1qdE=

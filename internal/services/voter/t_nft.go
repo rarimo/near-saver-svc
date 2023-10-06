@@ -37,11 +37,11 @@ func NewNFTOperator(chain string, rarimo *grpc.ClientConn, near nearprovider.Pro
 // Implements txParser
 var _ txParser = &NFTOperator{}
 
-func (n *NFTOperator) ParseTransaction(ctx context.Context, event *common.BridgeEvent, transfer *rarimotypes.Transfer) error {
+func (n *NFTOperator) ParseTransaction(ctx context.Context, event *common.BridgeDepositedEvent, transfer *rarimotypes.Transfer) error {
 	return n.equaler.CheckEquality(ctx, n, event, transfer)
 }
 
-func (n *NFTOperator) GetMessage(ctx context.Context, event *common.BridgeEventData) (*oracletypes.MsgCreateTransferOp, error) {
+func (n *NFTOperator) GetMessage(ctx context.Context, event *common.BridgeDepositedEventData) (*oracletypes.MsgCreateTransferOp, error) {
 	addressFrom := hexutil.Encode([]byte(*event.Token))
 	tokenIdFrom := *event.TokenID
 
