@@ -29,11 +29,11 @@ func NewNativeOperator(chain string, rarimo *grpc.ClientConn, log *logan.Entry) 
 // Implements txParser
 var _ txParser = &NativeOperator{}
 
-func (n *NativeOperator) ParseTransaction(ctx context.Context, event *common.BridgeEvent, transfer *rarimotypes.Transfer) error {
+func (n *NativeOperator) ParseTransaction(ctx context.Context, event *common.BridgeDepositedEvent, transfer *rarimotypes.Transfer) error {
 	return n.equaler.CheckEquality(ctx, n, event, transfer)
 }
 
-func (n *NativeOperator) GetMessage(ctx context.Context, event *common.BridgeEventData) (*oracletypes.MsgCreateTransferOp, error) {
+func (n *NativeOperator) GetMessage(ctx context.Context, event *common.BridgeDepositedEventData) (*oracletypes.MsgCreateTransferOp, error) {
 	from := tokentypes.OnChainItemIndex{
 		Chain:   n.chain,
 		Address: "",

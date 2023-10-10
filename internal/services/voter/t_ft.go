@@ -30,11 +30,11 @@ func NewFTOperator(chain string, rarimo *grpc.ClientConn, log *logan.Entry) *FTO
 // Implements txParser
 var _ txParser = &FTOperator{}
 
-func (f *FTOperator) ParseTransaction(ctx context.Context, event *common.BridgeEvent, transfer *rarimotypes.Transfer) error {
+func (f *FTOperator) ParseTransaction(ctx context.Context, event *common.BridgeDepositedEvent, transfer *rarimotypes.Transfer) error {
 	return f.equaler.CheckEquality(ctx, f, event, transfer)
 }
 
-func (f *FTOperator) GetMessage(ctx context.Context, event *common.BridgeEventData) (*oracletypes.MsgCreateTransferOp, error) {
+func (f *FTOperator) GetMessage(ctx context.Context, event *common.BridgeDepositedEventData) (*oracletypes.MsgCreateTransferOp, error) {
 	from := tokentypes.OnChainItemIndex{
 		Chain:   f.chain,
 		Address: hexutil.Encode([]byte(*event.Token)),
