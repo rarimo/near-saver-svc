@@ -12,7 +12,7 @@ import (
 )
 
 type messageGetter interface {
-	GetMessage(ctx context.Context, event *common.BridgeEventData) (*oracletypes.MsgCreateTransferOp, error)
+	GetMessage(ctx context.Context, event *common.BridgeDepositedEventData) (*oracletypes.MsgCreateTransferOp, error)
 }
 
 type equaler struct {
@@ -25,7 +25,7 @@ func newEqualer(core *coreProvider) *equaler {
 	}
 }
 
-func (e *equaler) CheckEquality(ctx context.Context, operator messageGetter, event *common.BridgeEvent, transfer *rarimotypes.Transfer) error {
+func (e *equaler) CheckEquality(ctx context.Context, operator messageGetter, event *common.BridgeDepositedEvent, transfer *rarimotypes.Transfer) error {
 	eventData := event.Data[0]
 	msg, err := operator.GetMessage(ctx, &eventData)
 	if err != nil {
@@ -40,7 +40,7 @@ func (e *equaler) CheckEquality(ctx context.Context, operator messageGetter, eve
 	}
 
 	// if its NFT event, we need to verify seed
-	if common.BridgeEventType(event.Event) == common.NFTEventType && transfer.Meta != nil {
+	if common.BridgeEventType(event.Event) == common.EventTypeNFTDeposited && transfer.Meta != nil {
 		msg.Meta.Seed = transfer.Meta.Seed
 		msg.To.TokenID = transfer.To.TokenID
 

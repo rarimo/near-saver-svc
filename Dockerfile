@@ -1,6 +1,7 @@
 FROM golang:1.20-alpine as buildbase
 
 WORKDIR /go/src/github.com/rarimo/near-saver-svc
+RUN apk add build-base
 COPY vendor .
 COPY . .
 

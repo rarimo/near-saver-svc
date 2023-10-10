@@ -11,8 +11,8 @@ var eventPrefix = "EVENT_JSON:"
 
 var ErrEventNotFound = errors.New("event not found")
 
-func extractEvent(tx *common.FinalExecutionOutcomeWithReceiptView, contractAddr, eventID string) (*common.BridgeEvent, error) {
-	var event *common.BridgeEvent
+func extractEvent(tx *common.FinalExecutionOutcomeWithReceiptView, contractAddr, eventID string) (*common.BridgeDepositedEvent, error) {
+	var event *common.BridgeDepositedEvent
 
 	for _, receiptOutcome := range tx.FinalExecutionOutcomeView.ReceiptsOutcome {
 		// Skipping receipt if it's not related to the contract
@@ -40,13 +40,13 @@ func extractEvent(tx *common.FinalExecutionOutcomeWithReceiptView, contractAddr,
 	return event, nil
 }
 
-func GetEventFromLog(log string) *common.BridgeEvent {
+func GetEventFromLog(log string) *common.BridgeDepositedEvent {
 	if !strings.HasPrefix(log, eventPrefix) {
 		return nil
 	}
 
 	eventRaw := strings.TrimPrefix(log, eventPrefix)
-	var event common.BridgeEvent
+	var event common.BridgeDepositedEvent
 
 	err := json.Unmarshal([]byte(eventRaw), &event)
 	if err != nil {
@@ -61,9 +61,9 @@ func GetEventFromLog(log string) *common.BridgeEvent {
 	return &event
 }
 
-func validateDepositEvent(event common.BridgeEvent) bool {
+func validateDepositEvent(event common.BridgeDepositedEvent) bool {
 	switch common.BridgeEventType(event.Event) {
-	case common.NFTEventType, common.FTEventType, common.NativeEventType:
+	case common.EventTypeNFTDeposited, common.EventTypeFTDeposited, common.EventTypeNativeDeposited:
 		return true
 	default:
 		return false

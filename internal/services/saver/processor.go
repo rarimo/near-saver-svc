@@ -13,7 +13,7 @@ import (
 )
 
 type messageGetter interface {
-	GetMessage(ctx context.Context, event *common.BridgeEventData) (*oracletypes.MsgCreateTransferOp, error)
+	GetMessage(ctx context.Context, event *common.BridgeDepositedEventData) (*oracletypes.MsgCreateTransferOp, error)
 }
 
 type txProcessor struct {
@@ -29,14 +29,14 @@ func newTxProcessor(cfg config.Config) *txProcessor {
 		contract:    cfg.ListenConf().Contract,
 		broadcaster: cfg.Broadcaster(),
 		operators: map[common.BridgeEventType]messageGetter{
-			common.NativeEventType: voter.NewNativeOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
-			common.FTEventType:     voter.NewFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
-			common.NFTEventType:    voter.NewNFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Near(), cfg.Log()),
+			common.EventTypeNativeDeposited: voter.NewNativeOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
+			common.EventTypeFTDeposited:     voter.NewFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
+			common.EventTypeNFTDeposited:    voter.NewNFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Near(), cfg.Log()),
 		},
 	}
 }
 
-func (t *txProcessor) ProcessTx(ctx context.Context, tx, eventID string, event *common.BridgeEvent) error {
+func (t *txProcessor) ProcessTx(ctx context.Context, tx, eventID string, event *common.BridgeDepositedEvent) error {
 	t.log.Debug("Parsing transaction " + tx)
 
 	operator, ok := t.operators[common.BridgeEventType(event.Event)]
