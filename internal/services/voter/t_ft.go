@@ -41,7 +41,7 @@ func (f *FTOperator) GetMessage(ctx context.Context, event *common.BridgeDeposit
 		TokenID: "",
 	}
 
-	to, err := f.core.OnChainItemIndexByChain(ctx, &tokentypes.QueryGetOnChainItemByOtherRequest{Chain: f.chain, Address: from.Address, TargetChain: event.ChainTo})
+	to, err := f.core.OnChainItemByOther(ctx, &tokentypes.QueryGetOnChainItemByOtherRequest{Chain: f.chain, Address: from.Address, TargetChain: event.ChainTo})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get item")
 	}
