@@ -43,10 +43,10 @@ func (p *coreProvider) OnChainItemByOther(ctx context.Context, req *tokentypes.Q
 	return resp.Item.Index, nil
 }
 
-func (p *coreProvider) OnChainItemIndexByChain(ctx context.Context, req *tokentypes.QueryGetOnChainItemByOtherRequest) (*tokentypes.OnChainItemIndex, error) {
-	item, err := p.tokenQuerier.OnChainItemByOther(ctx, req)
+func (p *coreProvider) OnChainItemIndexByChain(ctx context.Context, req *tokentypes.QueryGetOnChainItemByItemForChainRequest) (*tokentypes.OnChainItemIndex, error) {
+	item, err := p.tokenQuerier.OnChainItemByItemForChain(ctx, req)
 	if err != nil {
-		p.log.WithError(err).Error("error fetching on chain item")
+		p.log.WithError(err).Error("error fetching on chain item by item for chain")
 		return nil, verifiers.ErrWrongOperationContent
 	}
 

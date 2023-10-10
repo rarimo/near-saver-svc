@@ -40,7 +40,7 @@ func (n *NativeOperator) GetMessage(ctx context.Context, event *common.BridgeDep
 		TokenID: "",
 	}
 
-	to, err := n.core.OnChainItemIndexByChain(ctx, &tokentypes.QueryGetOnChainItemByOtherRequest{Chain: n.chain, TargetChain: event.ChainTo})
+	to, err := n.core.OnChainItemByOther(ctx, &tokentypes.QueryGetOnChainItemByOtherRequest{Chain: n.chain, TargetChain: event.ChainTo})
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get item")
 	}
