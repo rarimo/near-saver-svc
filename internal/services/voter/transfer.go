@@ -28,9 +28,9 @@ func NewTransferOperator(cfg config.Config) *TransferOperator {
 		contract: cfg.ListenConf().Contract,
 		chain:    cfg.ListenConf().Chain,
 		txParsers: map[common.BridgeEventType]txParser{
-			common.EventTypeNFTDeposited:    NewNFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Near(), cfg.Log()),
-			common.EventTypeFTDeposited:     NewFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
 			common.EventTypeNativeDeposited: NewNativeOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
+			common.EventTypeFTDeposited:     NewFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Log()),
+			common.EventTypeNFTDeposited:    NewNFTOperator(cfg.ListenConf().Chain, cfg.Cosmos(), cfg.Near(), cfg.Log()),
 		},
 	}
 }
