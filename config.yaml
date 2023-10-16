@@ -5,21 +5,21 @@ log:
 listener:
   addr: :8000
 
-near:
-  rpc: "https://rpc.testnet.near.org"
-  rpc_archival: "https://archival-rpc.testnet.near.org"
+near_provider:
+  rpc:
+    main: "https://rpc.testnet.near.org"
+    history: "https://archival-rpc.testnet.near.org"
+  s3:
+    access_key: "ACCESSKEY"
+    secret_access_key: "SECRET_ACCESS_KEY"
+    region: "eu-central-1"
+    bucket: "near-lake-data-testnet" # change suffix according to the network (testnet/mainnet)
 
 listen:
   contract: "bridge.rarimo.testnet"
   from_block: 103116740
   batch_size: 200
   chain: Near
-
-s3:
-  access_key: "ACCESSKEY"
-  secret_access_key: "SECRET_ACCESS_KEY"
-  region: "eu-central-1"
-  bucket: "near-lake-data-testnet" # change suffix according to the network (testnet/mainnet)
 
 broadcaster:
   addr: "localhost:9090"

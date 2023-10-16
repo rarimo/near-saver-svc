@@ -1178,6 +1178,8 @@ github.com/rarimo/near-go v0.0.0-20231006082437-36a0ae8fdb02 h1:dDifT3rFg/u4439Z
 github.com/rarimo/near-go v0.0.0-20231006082437-36a0ae8fdb02/go.mod h1:elvfSEsgy3N7Q0XZW0gT6ls4WRjvH24CfF6bB3XXzY4=
 github.com/rarimo/near-go v0.0.0-20231006091613-9444d27a1ffa h1:NSS2j1ZsiOhy52fjVZkx8cYvp35y0bfA6x4KXDiHCIM=
 github.com/rarimo/near-go v0.0.0-20231006091613-9444d27a1ffa/go.mod h1:elvfSEsgy3N7Q0XZW0gT6ls4WRjvH24CfF6bB3XXzY4=
+github.com/rarimo/near-go v0.0.0-20231016081124-c94dca3d7e22 h1:p/EnSlw1QFlVfdG1aveunOGx07tyN5rWWnVE2sFMsOY=
+github.com/rarimo/near-go v0.0.0-20231016081124-c94dca3d7e22/go.mod h1:uu8kOPvUtELVCXIiobEyZO6684ZtHc7qewAsWViXRVA=
 github.com/rarimo/rarimo-core v0.0.0-20231004143803-6b209428ecbf h1:NvYhOErW0d7ohn2YzGxQYKssrgVrKOvjrKL1OBQgCB4=
 github.com/rarimo/rarimo-core v0.0.0-20231004143803-6b209428ecbf/go.mod h1:Onkd0EJP94hw4dT/2KH7QXRwDG4eIGeaMffSjA1i6/s=
 github.com/rarimo/saver-grpc-lib v1.0.0 h1:MGUVjYg7unmodYczVsLqlqZNkT4CIgKqdo6aQtL1qdE=
